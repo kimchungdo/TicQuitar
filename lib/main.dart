@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:tic_quitar/page/one_finger_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
       ),
       home: const MyHomePage(),
     );
@@ -83,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if(currentIndex == 0){
       return buildHomePage();
     }else if(currentIndex == 1){
-      return Container();
+      return const OneFingerPage();
     }else if(currentIndex == 2){
       return Container();
     }else if(currentIndex == 3){
