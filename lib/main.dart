@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:tic_quitar/page/fingers_page.dart';
 import 'package:tic_quitar/page/one_finger_page.dart';
+import 'package:tic_quitar/page/stroke_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -86,9 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }else if(currentIndex == 1){
       return const OneFingerPage();
     }else if(currentIndex == 2){
-      return Container();
+      return const FingersPage();
     }else if(currentIndex == 3){
-      return Container();
+      return const StrokePage();
     }else{
       return Container();
     }

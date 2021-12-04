@@ -12,17 +12,34 @@ class GyeNameGamePage extends StatefulWidget {
 
 class _GyeNameGamePageState extends State<GyeNameGamePage> {
   bool version = true;
-  List<String> quiz = [];
+  List<String> quiz = korGye;
+  List<String> answer = engGye;
+  List<int> seed = [0, 1, 2, 3, 4, 5, 6];
   Color basicColor = Colors.yellow;
 
   int gyeKey = Random().nextInt(7);
+  int _correct = 0;
+  int _wrong = 0;
+
   //version ? quiz = korGye : quiz = engGye;
 
-  void getNextGye(){
+  void getNextGye() {
     setState(() {
       gyeKey = Random().nextInt(7);
       basicColor = Colors.yellow;
     });
+  }
+
+  void getNextSeed() {
+    seed.clear();
+    while (true) {
+      var rand = Random().nextInt(7);
+      if (!seed.contains(rand)) {
+        seed.add(rand);
+      }
+      if (seed.length == 7) break;
+    }
+    setState(() {});
   }
 
 
@@ -35,59 +52,66 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
             Container(height: 30),
             Container(
               child: Center(
-                  child: Text("${korGye[gyeKey]}", style: TextStyle(fontSize: 56))),
+                  child:
+                      Text("${quiz[gyeKey]}", style: TextStyle(fontSize: 56))),
               color: basicColor,
               height: 100,
             ),
-
             Container(height: 30),
-
-/*            ElevatedButton(onPressed: (){}, child: Text("${engGye[0]}")),
-            ElevatedButton(onPressed: (){}, child: Text("${engGye[1]}")),
-            ElevatedButton(onPressed: (){}, child: Text("${engGye[2]}")),
-            ElevatedButton(onPressed: (){}, child: Text("${engGye[3]}")),
-            ElevatedButton(onPressed: (){}, child: Text("${engGye[4]}")),
-            ElevatedButton(onPressed: (){}, child: Text("${engGye[5]}")),
-            ElevatedButton(onPressed: (){}, child: Text("${engGye[6]}")),*/
 
             GridView.count(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              children: List.generate(engGye.length, (_idx){
+              children: List.generate(answer.length, (_idx) {
                 return InkWell(
+                  splashColor: Colors.blue,
+                  //highlightColor: Colors.yellow,
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text(engGye[_idx], style: TextStyle(fontSize: 20)),
+                    child: Text(answer[seed[_idx]],
+                        style: TextStyle(fontSize: 20)),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFFff7f7f)
-                    ),
+                        borderRadius: BorderRadius.circular(8),
+                        color: Color(0xFFff7f7f)),
                   ),
-                  onTap: (){
-                    if(_idx == gyeKey){
-                      print("정답");
+                  onTap: () {
+                    if (seed[_idx] == gyeKey) {
+                      _correct ++;
                       getNextGye();
-                    }
-                    else{
+                      getNextSeed();
+                    } else {
+                      _wrong ++;
                       setState(() {
                         basicColor = Colors.red;
                       });
                     }
-
-                    },
+                  },
                 );
               }),
-              crossAxisCount: 3,
+              crossAxisCount: 7,
               crossAxisSpacing: 4,
               mainAxisSpacing: 4,
               childAspectRatio: 1,
+            ),
+            TextButton(
+                onPressed: () {
+                  List<String> temp = [];
+                  setState(() {
+                    temp = quiz;
+                    quiz = answer;
+                    answer = temp;
+                  });
+                },
+                child: Text("ChangeMode")),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("맞춘 갯수 : ${_correct}", style: TextStyle(fontSize: 16)),
+                Text("틀린 갯수 : ${_wrong}", style: TextStyle(fontSize: 16)),
+              ],
             )
           ],
         ));
   }
-
-  void whenGyeClicked() {
-    //
-  }
-
 }

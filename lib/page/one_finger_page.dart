@@ -38,6 +38,24 @@ class _OneFingerPageState extends State<OneFingerPage> {
                       );
                     },
                   ),
+
+                  Center(child: Text("기본 스케일 암기 ★★☆☆☆", style: TextStyle(fontSize: 16),)),
+                  InkWell(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      height: 50,
+                      child: Center(child: Text("펜타토닉 스케일 외우기", style: TextStyle(fontSize: 16),)),
+                      decoration: BoxDecoration(
+                          color: Colors.orangeAccent,
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                    ),
+                    onTap: () async {
+                      await Navigator.of(context).push(
+                          MaterialPageRoute(builder: (ctx)=>GyeNameGamePage())
+                      );
+                    },
+                  ),
                 ],
               )
           );
