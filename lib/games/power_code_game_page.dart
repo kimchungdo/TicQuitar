@@ -15,7 +15,7 @@ class _PowerCodeGamePageState extends State<PowerCodeGamePage> {
   Widget makeCode(List<String> codeData) {
     return Row(
       children: [
-        Text("codeName"),
+        Text(codeData[7]),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

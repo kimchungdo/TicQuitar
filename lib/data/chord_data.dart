@@ -10,7 +10,8 @@ List<String> powerECode = [                 //complete
   "├─┼○┼─┼─┤",
   "├─┼○┼─┼─┤",
   "└─┴─┴─┴─┘",
-  "0"];
+  "0",
+"파워코드 E"];
 
 List<String> powerFCode = [           //complete
   "┌─┬─┬─┬─┐",
@@ -19,7 +20,8 @@ List<String> powerFCode = [           //complete
   "├─┼─┼○┼─┤",
   "├─┼─┼○┼─┤",
   "└○┴─┴─┴─┘",
-  "0"];
+  "0",
+  "파워코드 F"];
 
 List<String> powerGCode = [            //complete
   "┌─┬─┬─┬─┐",
@@ -28,7 +30,8 @@ List<String> powerGCode = [            //complete
   "├─┼─┼○┼─┤",
   "├─┼─┼○┼─┤",
   "└○┴─┴─┴─┘",
-  "3"];
+  "3",
+  "파워코드 G"];
 
 List<String> powerACode = [                //complete
   "┌─┬─┬─┬─┐",
@@ -37,7 +40,8 @@ List<String> powerACode = [                //complete
   "├─┼─┼○┼─┤",
   "├─┼─┼○┼─┤",
   "└○┴─┴─┴─┘",
-  "5"];
+  "5",
+  "파워코드 A"];
 
 List<String> powerBCode = [          //complete
   "┌─┬─┬─┬─┐",
@@ -46,7 +50,8 @@ List<String> powerBCode = [          //complete
   "├─┼─┼○┼─┤",
   "├─┼─┼○┼─┤",
   "└○┴─┴─┴─┘",
-  "7"];
+  "7",
+  "파워코드 B"];
 
 List<String> powerCCode = [
   "┌─┬─┬─┬─┐",
@@ -55,7 +60,8 @@ List<String> powerCCode = [
   "├─┼─┼○┼─┤",
   "├○┼─┼─┼─┤",
   "└─┴─┴─┴─┘",
-  "3"];
+  "3",
+  "파워코드 C"];
 
 List<String> powerDCode = [
   "┌─┬─┬─┬─┐",
@@ -64,7 +70,8 @@ List<String> powerDCode = [
   "├─┼─┼○┼─┤",
   "├○┼─┼─┼─┤",
   "└─┴─┴─┴─┘",
-  "5"];
+  "5",
+  "파워코드 D"];
 
 List<String> powerHighECode = [
   "┌─┬─┬─┬─┐",
@@ -73,4 +80,5 @@ List<String> powerHighECode = [
   "├─┼─┼○┼─┤",
   "├○┼─┼─┼─┤",
   "└─┴─┴─┴─┘",
-  "7"];
+  "7",
+  "파워코드 높은 E"];
