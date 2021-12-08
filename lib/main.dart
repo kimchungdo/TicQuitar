@@ -110,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Center(
         child: Column(
           children: [
+            Image.asset("assets/img/sample.png"),
             Text(goodWords[todayGoodWord]),
             Text(whoSayThat[todayGoodWord])
           ],

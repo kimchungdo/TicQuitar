@@ -59,10 +59,32 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
             ),
             Container(height: 30),
 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("맞춘 갯수 : ${_correct}", style: TextStyle(fontSize: 16)),
+                Text("틀린 갯수 : ${_wrong}", style: TextStyle(fontSize: 16)),
+              ],
+            ),
+
+            Container(height: 30),
+
             GridView.count(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              children: List.generate(answer.length, (_idx) {
+              children: List.generate(answer.length+1, (_idx) {
+                if(_idx == 7){
+                  return TextButton(
+                      onPressed: () {
+                        List<String> temp = [];
+                        setState(() {
+                          temp = quiz;
+                          quiz = answer;
+                          answer = temp;
+                        });
+                      },
+                      child: Text("Change Mode"));
+                }
                 return InkWell(
                   splashColor: Colors.blue,
                   //highlightColor: Colors.yellow,
@@ -88,29 +110,14 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
                   },
                 );
               }),
-              crossAxisCount: 7,
+              crossAxisCount: 4,
               crossAxisSpacing: 4,
               mainAxisSpacing: 4,
               childAspectRatio: 1,
             ),
-            TextButton(
-                onPressed: () {
-                  List<String> temp = [];
-                  setState(() {
-                    temp = quiz;
-                    quiz = answer;
-                    answer = temp;
-                  });
-                },
-                child: Text("ChangeMode")),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("맞춘 갯수 : ${_correct}", style: TextStyle(fontSize: 16)),
-                Text("틀린 갯수 : ${_wrong}", style: TextStyle(fontSize: 16)),
-              ],
-            )
+
+
           ],
         ));
   }
