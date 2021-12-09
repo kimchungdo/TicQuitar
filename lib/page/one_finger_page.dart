@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tic_quitar/games/gye_name_game_page.dart';
+import 'package:tic_quitar/penta_lecture_page.dart';
 
 class OneFingerPage extends StatefulWidget {
   const OneFingerPage({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class _OneFingerPageState extends State<OneFingerPage> {
                     ),
                     onTap: () async {
                       await Navigator.of(context).push(
-                          MaterialPageRoute(builder: (ctx)=>GyeNameGamePage())
+                          MaterialPageRoute(builder: (ctx)=>PentatonicLecturePage())
                       );
                     },
                   ),

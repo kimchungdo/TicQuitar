@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:tic_quitar/data/chord_data.dart';
+import 'dart:async';
 
 class GyeNameGamePage extends StatefulWidget {
   const GyeNameGamePage({Key? key}) : super(key: key);
@@ -16,10 +17,13 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
   List<String> answer = engGye;
   List<int> seed = [0, 1, 2, 3, 4, 5, 6];
   Color basicColor = Colors.yellow;
-
+  late Timer _timer;
   int gyeKey = Random().nextInt(7);
   int _correct = 0;
   int _wrong = 0;
+
+  int _start = 10;
+  bool isTimerRun = false;
 
   //version ? quiz = korGye : quiz = engGye;
 
@@ -41,6 +45,56 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
     }
     setState(() {});
   }
+
+  void startTimer() {
+    const oneSec = Duration(seconds: 1);
+    _timer = Timer.periodic(
+        oneSec,
+        (Timer timer) => setState(() {
+              if (_start < 1) {
+                timer.cancel();
+                isTimerRun = false;
+                showDialog(context: context, builder: (BuildContext context){
+                  return AlertDialog(
+                    title: Text('Game Over'),
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: <Widget>[
+                          Text("맞은 갯수: ${_correct}"),
+                          Text("틀린 갯수: ${_wrong}"),
+                          Text("점수: ${_correct < _wrong ? 0 : _correct * 10 - _wrong*10}")
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('좋아요', style: TextStyle(color: Colors.black)),
+                        onPressed: (){
+                          Navigator.of(context).popUntil((route) => route.isFirst);
+                        },
+                      ),
+                      TextButton(
+                        child: Text('다시할래요', style: TextStyle(color: Colors.black)),
+                        onPressed: (){
+                          setState(() {
+                            _correct = 0;
+                            _wrong = 0;
+                            _start = 10;
+                            basicColor = Colors.yellow;
+                          });
+                          Navigator.of(context).pop();
+                        },
+                      )
+                    ],
+                  );
+                });
+              } else {
+                _start = _start - 1;
+              }
+            }));
+  }
+
+
 
 
   @override
@@ -67,6 +121,13 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
               ],
             ),
 
+            Row(
+              children: [
+                Expanded(child: Container(color: Colors.blue, height: 20), flex: _correct),
+                Expanded(child: Container(color: Colors.red, height: 20), flex: _wrong)
+              ],
+            ),
+
             Container(height: 30),
 
             GridView.count(
@@ -74,16 +135,25 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
               shrinkWrap: true,
               children: List.generate(answer.length+1, (_idx) {
                 if(_idx == 7){
-                  return TextButton(
-                      onPressed: () {
-                        List<String> temp = [];
-                        setState(() {
-                          temp = quiz;
-                          quiz = answer;
-                          answer = temp;
-                        });
-                      },
-                      child: Text("Change Mode"));
+                  return InkWell(
+                    splashColor: Colors.blue,
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text("Change Mode"),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Color(0xFFff7f77),
+                      ),
+                    ),
+                    onLongPress: (){
+                      List<String> temp = [];
+                      setState(() {
+                        temp = quiz;
+                        quiz = answer;
+                        answer = temp;
+                      });
+                    },
+                  );
                 }
                 return InkWell(
                   splashColor: Colors.blue,
@@ -97,6 +167,11 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
                         color: Color(0xFFff7f7f)),
                   ),
                   onTap: () {
+                    if(!isTimerRun){
+                      startTimer();
+                      isTimerRun = true;
+                    }
+
                     if (seed[_idx] == gyeKey) {
                       _correct ++;
                       getNextGye();
@@ -116,6 +191,7 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
               childAspectRatio: 1,
             ),
 
+            Text(_start.toString()),
 
 
           ],
