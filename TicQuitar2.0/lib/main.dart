@@ -61,19 +61,19 @@ class _MyHomePageState extends State<MyHomePage> {
           items: const [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-                label: "홈"
+                label: "Daily"
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.library_books),
-                label: "공부"
+                label: "Study"
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.format_line_spacing),
-                label: "통계"
+                label: "Status"
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.arrow_circle_down_sharp),
-                label: "내려치기"
+                icon: Icon(Icons.military_tech),
+                label: "Goal"
             ),
           ],
           currentIndex: currentIndex,
