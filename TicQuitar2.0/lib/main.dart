@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:tic_quitar_2/data/color.dart';
+import 'package:tic_quitar_2/page/study_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: primaryOrange,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'HomePage'),
     );
   }
 }
@@ -35,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if(currentIndex == 0){
       return Container();
     }else if(currentIndex == 1){
-      return Container();
+      return const StudyPage();
     }else if(currentIndex == 2){
       return Container();
     }else{
@@ -47,15 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          ],
-        ),
-      ),
+      body: getPage(),backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           items: const [
@@ -64,15 +62,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 label: "Daily"
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.library_books),
+                icon: Icon(CupertinoIcons.book_fill),
                 label: "Study"
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.format_line_spacing),
+                icon: Icon(CupertinoIcons.chart_bar_fill),
                 label: "Status"
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.military_tech),
+                icon: Icon(CupertinoIcons.flame_fill),
                 label: "Goal"
             ),
           ],
@@ -83,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
             });
           }
       ),
+      drawer: Drawer(),
     );
   }
 }
