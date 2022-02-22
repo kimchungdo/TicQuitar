@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:tic_quitar_2/data/color.dart';
-import 'package:tic_quitar_2/page/study_page.dart';
+import 'package:tic_quitar_2/page/daily_tab/daily_page.dart';
+import 'package:tic_quitar_2/page/study_tab/study_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget getPage(){
     if(currentIndex == 0){
-      return Container();
+      return const DailyPage();
     }else if(currentIndex == 1){
       return const StudyPage();
     }else if(currentIndex == 2){
