@@ -17,9 +17,10 @@ class StretchPage extends StatefulWidget {
 
 class _StretchPageState extends State<StretchPage> {
   int _light = 0;
-  int speed = 80;
+  int speed = 60;
   bool isPlaying = false;
-
+  int multiply = 16667;   //microseconds...1,000,000 / 60 = 16666.666666...
+  var _timer;
   @override
   void dispose() {
     // TODO: implement dispose
@@ -29,13 +30,16 @@ class _StretchPageState extends State<StretchPage> {
   //이부분 디스포즈 안되는듯 셋스테이트 부를때마다 오류터짐;
 
   void setSpeedFunction() {
-    Timer.periodic(Duration(seconds: 1), (timer) {
-      if (isPlaying == true && mounted)
-        setState(() {
-          _light++;
-          if (_light > 3) _light = 0;
-        });
-    });
+    if(isPlaying == true && mounted){
+      _timer = Timer.periodic(Duration(microseconds: speed * multiply), (timer) {
+        if (isPlaying == true && mounted) {
+          setState(() {
+            _light++;
+            if (_light > 3) _light = 0;
+          });
+        }
+      });
+    }
   }
 
   Widget buildMetronome() => Container(
@@ -128,12 +132,29 @@ class _StretchPageState extends State<StretchPage> {
             buildDailyTitle(widget.item!, blackColor),
             buildMetronome(),
             buildGuide(),
+            Row(
+              children: [
+                buildText(text: "${speed}BPM", size: 24),
+                IconButton(onPressed: (){
+                  setState((){
+                    _timer.stop();
+                    speed ++;
+                  });
+                }, icon: Icon(Icons.add)),
+                IconButton(onPressed: (){
+                  setState(() {
+                    _timer.stop();
+                    speed --;
+                  });
+                }, icon: Icon(Icons.remove)),
+              ],
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: pastelRedColor,
-        child: isPlaying ? Icon(Icons.pause) : Icon(Icons.play_arrow_rounded),
+        child: isPlaying ? const Icon(Icons.pause) : const Icon(Icons.play_arrow_rounded),
         onPressed: () {
           setState(() {
             isPlaying = !isPlaying;
