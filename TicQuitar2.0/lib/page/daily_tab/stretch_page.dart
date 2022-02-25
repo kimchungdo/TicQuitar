@@ -86,7 +86,7 @@ class _StretchPageState extends State<StretchPage> {
       );
 
   Widget buildGuide() => Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
