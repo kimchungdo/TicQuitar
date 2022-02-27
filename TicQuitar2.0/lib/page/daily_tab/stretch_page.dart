@@ -27,7 +27,6 @@ class _StretchPageState extends State<StretchPage> {
     super.dispose();
   }
 
-  //이부분 디스포즈 안되는듯 셋스테이트 부를때마다 오류터짐;
 
   void setSpeedFunction() {
     if(isPlaying == true && mounted){
