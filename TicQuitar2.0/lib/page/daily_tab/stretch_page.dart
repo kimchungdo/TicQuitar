@@ -41,6 +41,7 @@ class _StretchPageState extends State<StretchPage> {
     }
   }
 
+  //회사에서 너무많은일을해서 오늘은 쉬어야겠어요 
   Widget buildMetronome() => Container(
         margin: const EdgeInsets.symmetric(vertical: 10),
         height: 150,
