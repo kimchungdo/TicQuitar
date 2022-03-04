@@ -21,6 +21,7 @@ List<Widget> fImageGroup = [Image.asset('assets/images/codes/F.jpg'),Image.asset
 
 List<Widget> gImageGroup = [Image.asset('assets/images/codes/G.jpg'),Image.asset('assets/images/codes/G7.jpg'),
   Image.asset('assets/images/codes/Gm.jpg'),Image.asset('assets/images/codes/GM7.jpg'),Image.asset('assets/images/codes/Gm7 (1).jpg')];
+List<Widget> ballet = [Image.asset('assets/images/codes/0001.jpg'), Image.asset('assets/images/codes/0002.jpg')];
 
 StudyItem aCodes = StudyItem(section: "CODE", title: "기타코드_A CODE", image: aImageGroup, favorite: false, description: "A, A7, Am, Am7, AM7" );
 StudyItem bCodes = StudyItem(section: "CODE", title: "기타코드_B CODE", image: bImageGroup, favorite: false, description: "B, Bm, BM7, Bm7" );
@@ -29,3 +30,4 @@ StudyItem dCodes = StudyItem(section: "CODE", title: "기타코드_D CODE", imag
 StudyItem eCodes = StudyItem(section: "CODE", title: "기타코드_E CODE", image: eImageGroup, favorite: false, description: "E, E7, Em, EM7, Em7" );
 StudyItem fCodes = StudyItem(section: "CODE", title: "기타코드_F CODE", image: fImageGroup, favorite: false, description: "F, F7, Fm, FM7, Fm7" );
 StudyItem gCodes = StudyItem(section: "CODE", title: "기타코드_G CODE", image: gImageGroup, favorite: false, description: "G, G7, Gm, GM7, Gm7" );
+StudyItem baItem = StudyItem(section: "ETC", title: "하이(바레)코드 포지션", image: ballet, favorite: true, description: "good");

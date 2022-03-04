@@ -26,7 +26,7 @@ class _StudyItemPageState extends State<StudyItemPage> {
             buildSubSectionItem(widget.item),
             CarouselSlider(items: widget.item!.image,
                 options: CarouselOptions(
-                  height: 400,
+                  height: 600,
                   aspectRatio: 16/9,
                   viewportFraction: 0.8,
                   initialPage: 0,
