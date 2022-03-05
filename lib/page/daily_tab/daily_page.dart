@@ -4,6 +4,7 @@ import 'package:tic_quitar_2/components/text.dart';
 import 'package:tic_quitar_2/data/color.dart';
 import 'package:tic_quitar_2/data/model.dart';
 import 'package:tic_quitar_2/page/construction_page.dart';
+import 'package:tic_quitar_2/page/daily_tab/five_six_game_page.dart';
 import 'package:tic_quitar_2/page/daily_tab/gye_game_page.dart';
 import 'package:tic_quitar_2/page/daily_tab/stretch_page.dart';
 
@@ -27,6 +28,13 @@ class _DailyPageState extends State<DailyPage> {
       estimateTime: 1,
       step: "입문",
       important: 1);
+  DailyItem fiveSixGame = DailyItem(
+    title: "5번줄 6번줄 외우기 게임",
+    needGuitar: true,
+    estimateTime: 10,
+    step: '입문',
+    important: 5,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +62,15 @@ class _DailyPageState extends State<DailyPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const GyeNameGamePage()));
+              },
+            ),
+            InkWell(
+              child: buildDailyItem(fiveSixGame, pastelBlueColor),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FiveSixGamePage(item: fiveSixGame,)));
               },
             ),
           ],
