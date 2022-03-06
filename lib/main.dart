@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:tic_quitar_2/data/color.dart';
 import 'package:tic_quitar_2/page/daily_tab/daily_page.dart';
+import 'package:tic_quitar_2/page/goal_tab/goal_page.dart';
 import 'package:tic_quitar_2/page/study_tab/study_page.dart';
 
 void main() {
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }else if(currentIndex == 2){
       return Container();
     }else{
-      return Container();
+      return const GoalPage();
     }
   }
 
