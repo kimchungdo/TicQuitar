@@ -21,3 +21,11 @@ class DailyItem{
 
   DailyItem({required this.title, required this.needGuitar, required this.estimateTime, required this.step, required this.important});
 }
+
+class YoutubeItem{
+  String? thumbnail;
+  String? videoId;
+  String? title;
+
+  YoutubeItem({this.thumbnail, this.videoId, this.title});
+}

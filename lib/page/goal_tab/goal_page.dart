@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tic_quitar_2/components/text.dart';
+import 'package:tic_quitar_2/data/model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class GoalPage extends StatefulWidget {
   const GoalPage({Key? key}) : super(key: key);
@@ -9,8 +10,9 @@ class GoalPage extends StatefulWidget {
 }
 
 class _GoalPageState extends State<GoalPage> {
-  String? videoId = YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=BBAyRBTfsOU");
+  String? videoId = YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=dyRsYk0LyA8");
   TextEditingController linkController = TextEditingController();
+  YoutubeItem sampleItem = YoutubeItem();
 
   Widget buildInputField() => Container(
     child: TextField(
@@ -22,8 +24,16 @@ class _GoalPageState extends State<GoalPage> {
     )
   );
 
-  Widget buildItem() => Container(
-    child: Text("hello"),
+  Widget buildItem(YoutubeItem item) => Container(
+    child: Row(
+      children: [
+        Image.network(item.thumbnail!),
+        buildText(text: item.title),
+      ],
+    ),
+    decoration: BoxDecoration(
+      border: Border.all()
+    ),
   );
   @override
   Widget build(BuildContext context) {
@@ -34,11 +44,18 @@ class _GoalPageState extends State<GoalPage> {
           buildText(text: "My Song Link", size: 24, weight: Weight.Bold),
           buildInputField(),
           TextButton(onPressed: (){
+            if(linkController.text.isEmpty) {
+              videoId = YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=dyRsYk0LyA8");
+            } else {
+              videoId = YoutubePlayer.convertUrlToId(linkController.text);
+            }
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Player(videoId!,'hello'))
             );
-          }, child: Text("clickme"))
+          }, child: Text("clickme")),
+
+          //buildItem(sampleItem),
         ],
       ),
     );

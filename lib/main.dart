@@ -57,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: getPage(),backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
