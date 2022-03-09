@@ -61,7 +61,7 @@ class _DailyPageState extends State<DailyPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const GyeNameGamePage()));
+                        builder: (context) => GyeNameGamePage(item: gyeGame)));
               },
             ),
             InkWell(

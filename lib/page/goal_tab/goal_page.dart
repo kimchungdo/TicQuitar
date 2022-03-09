@@ -87,9 +87,9 @@ class PlayerState extends State<Player> {
       initialVideoId: _videoID,
       flags: const YoutubePlayerFlags(
         mute: false,
-        autoPlay: false,
+        autoPlay: true,
         disableDragSeek: false,
-        loop: false,
+        loop: true,
         isLive: false,
         forceHD: false,
         enableCaption: true,

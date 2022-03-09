@@ -1,12 +1,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:tic_quitar_2/components/widgets.dart';
 import 'dart:async';
 
 import 'package:tic_quitar_2/data/chord_data.dart';
+import 'package:tic_quitar_2/data/color.dart';
+import 'package:tic_quitar_2/data/model.dart';
 
 class GyeNameGamePage extends StatefulWidget {
-  const GyeNameGamePage({Key? key}) : super(key: key);
+  final DailyItem? item;
+  GyeNameGamePage({this.item});
 
   @override
   _GyeNameGamePageState createState() => _GyeNameGamePageState();
@@ -17,7 +21,7 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
   List<String> quiz = korGye;
   List<String> answer = engGye;
   List<int> seed = [0, 1, 2, 3, 4, 5, 6];
-  Color basicColor = Colors.yellow;
+  Color basicColor = greyColor;
   late Timer _timer;
   int gyeKey = Random().nextInt(7);
   int _correct = 0;
@@ -105,6 +109,7 @@ class _GyeNameGamePageState extends State<GyeNameGamePage> {
         appBar: AppBar(backgroundColor: Colors.white, elevation: 0,),
         body: Column(
           children: [
+            buildDailyTitle(widget.item!, blackColor),
             Container(height: 30),
             Container(
               child: Center(
